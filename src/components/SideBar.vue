@@ -6,18 +6,19 @@
         <h2>Menu</h2>
         <ul>
           <li v-for="item in sidebarItems" :key="item.name">
-            <router-link v-if="sidebarItems.length" :to="item.link">{{ item.name }}</router-link>
-          </li>
-          <li v-if="!sidebarItems.length">
-            <p>No items available.</p>
+            <router-link :to="item.link">{{ item.name }}</router-link> <!-- Link clicável para cada item -->
           </li>
         </ul>
+        <div v-if="!sidebarItems.length">
+          <p>Loading items...</p> <!-- Placeholder para quando os itens não estão disponíveis -->
+        </div>
       </div>
     </div>
   </transition>
 </template>
 
 <script>
+import { ref, onMounted } from 'vue';
 import axios from 'axios';
 
 export default {
@@ -27,27 +28,31 @@ export default {
       required: true
     }
   },
-  data() {
-    return {
-      sidebarItems: [] // Para armazenar os itens da sidebar
+  setup() {
+    const sidebarItems = ref([]); // Define um estado reativo para os itens da sidebar
+
+    const fetchSidebarItems = async () => {
+      try {
+        const response = await axios.get('/api/sidebar'); // Chama a API para obter os itens
+        sidebarItems.value = response.data; // Armazena os itens recebidos
+      } catch (error) {
+        console.error('Erro ao buscar itens da sidebar:', error);
+        sidebarItems.value = []; // Define como vazio em caso de erro
+      }
     };
-  },
-  methods: {
-    closeSidebar() {
+
+    onMounted(() => {
+      fetchSidebarItems(); // Chama a função ao montar o componente
+    });
+
+    const closeSidebar = () => {
       this.$emit('close');
-    },
-    fetchSidebarItems() {
-      axios.get('/api/sidebar')
-        .then(response => {
-          this.sidebarItems = response.data; // Armazena os itens no estado
-        })
-        .catch(error => {
-          console.error('Error fetching sidebar items:', error);
-        });
-    }
-  },
-  mounted() {
-    this.fetchSidebarItems(); // Chama a função para obter os itens ao montar o componente
+    };
+
+    return {
+      sidebarItems,
+      closeSidebar
+    };
   }
 };
 </script>
@@ -55,12 +60,12 @@ export default {
 <style scoped>
 .sidebar {
   position: fixed;
-  left: 0; /* Alinha à esquerda */
+  left: 0;
   top: 0;
   width: 300px;
   height: 100%;
   background-color: #333;
-  z-index: 101; /* Acima do backdrop */
+  z-index: 101;
 }
 
 .close-btn {
@@ -87,11 +92,11 @@ export default {
 
 .slide-fade-enter {
   opacity: 0;
-  transform: translateX(-100%); 
+  transform: translateX(-100%);
 }
 
 .slide-fade-leave-to {
   opacity: 0.7;
-  transform: translateX(-100%); 
+  transform: translateX(-100%);
 }
 </style>
