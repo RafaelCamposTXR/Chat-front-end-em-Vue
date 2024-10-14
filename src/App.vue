@@ -1,26 +1,33 @@
 <template>
-  <div id="app">
-    <Home />
+  <div>
+    <button @click="toggleSidebar">Abrir Sidebar</button>
+    <Backdrop v-if="isBackdropVisible" @click="toggleSidebar" />
+    <Sidebar v-show="isSidebarVisible" @close="toggleSidebar" :isVisible="isSidebarVisible" />
+    <p> Texto muuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuito longo</p>
   </div>
 </template>
 
 <script>
-import Home from './views/HomePage.vue';
+import Backdrop from './components/BackdropSidebar.vue';
+import Sidebar from './components/SideBar.vue';
 
 export default {
-  components: {
-    Home
+  components: { Backdrop, Sidebar },
+  data() {
+    return {
+      isSidebarVisible: false,
+      isBackdropVisible: false
+    };
+  },
+  methods: {
+    toggleSidebar() {
+      this.isSidebarVisible = !this.isSidebarVisible;
+      this.isBackdropVisible = !this.isBackdropVisible;
+    }
   }
-}
+};
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+/* Estilos globais, se necessário */
 </style>
