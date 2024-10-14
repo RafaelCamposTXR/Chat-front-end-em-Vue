@@ -1,33 +1,31 @@
 <template>
-  <div class="home">
-    <h1>Bem-vindo ao Chatbot!</h1>
-    <p>Converse com a IA abaixo:</p>
-    <ChatWindow />
+  <div>
+    <h1>Página Inicial</h1>
+    <p>{{ message }}</p>
   </div>
 </template>
 
 <script>
-
-import ChatWindow from '../components/ChatWindow.vue';
+import axios from 'axios';
 
 export default {
-  components: {
-    ChatWindow
+  data() {
+    return {
+      message: ''
+    };
+  },
+  mounted() {
+    axios.get('/api/teste')
+      .then(response => {
+        this.message = response.data; 
+      })
+      .catch(error => {
+        console.error("There was an error!", error);
+        this.message = 'Error fetching data';
+      });
   }
-}
+};
 </script>
 
 <style scoped>
-.home {
-  text-align: center;
-  margin: 20px;
-}
-
-h1 {
-  font-size: 2.5em;
-}
-
-p {
-  font-size: 1.2em;
-}
 </style>
