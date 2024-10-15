@@ -1,21 +1,24 @@
+
+
 <template>
   <transition name="slide-fade">
     <div v-if="isVisible" class="sidebar">
-      <button class="close-btn" @click="closeSidebar">Fechar</button>
       <div class="content">
         <h2 class="sidebar-titulo">Menu</h2>
         <ul>
-          <li class="sidebar-item-pai" v-for="item in sidebarItems" :key="item.name">
-            <router-link :to="item.link" class="sidebar-item">{{ item.name }}</router-link> <!-- Link clicável para cada item -->
+          <li class="sidebar-item-pai" v-for="item in sidebarItems" :key="item.id">
+            <router-link :to="`/chat/${item.id}/${item.user}`" class="sidebar-item">{{ item.name }}</router-link> <!-- Link atualizado para incluir o ID do chat -->
           </li>
         </ul>
         <div v-if="!sidebarItems.length">
-          <p>Carregando Conversas...</p> <!-- Placeholder para quando os itens não estão disponíveis -->
+          <p>Carregando Conversas...</p>
         </div>
       </div>
     </div>
   </transition>
 </template>
+
+
 
 <script>
 import { ref, onMounted } from 'vue';

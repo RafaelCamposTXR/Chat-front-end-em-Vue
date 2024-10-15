@@ -1,91 +1,72 @@
 <template>
-  <div class="chat-window">
-    <div class="chat-box">
-      <div v-for="(message, index) in messages" :key="index" class="message" :class="{'user': message.sender === 'user', 'ai': message.sender === 'ai'}">
-        <p>{{ message.text }}</p>
+  <div class="chat-view">
+    <h1>Chat ID: {{ chatId }}</h1>
+    <div v-if="messages.length">
+      <div v-for="msg in messages" :key="msg.id">
+        <strong>{{ msg.autor }}:</strong> {{ msg.conteudo }}
       </div>
     </div>
-    <div class="input-area">
-      <input v-model="userMessage" @keyup.enter="sendMessage" placeholder="Digite sua mensagem..."/>
-      <button @click="sendMessage">Enviar</button>
-    </div>
+    <input v-model="newMessage" placeholder="Digite sua mensagem..." />
+    <button @click="sendMessage">Enviar</button>
   </div>
 </template>
 
 <script>
+import { ref, onMounted } from 'vue';
+import axios from 'axios';
+import { useRoute } from 'vue-router';
+
 export default {
-  data() {
-    return {
-      userMessage: '',    // Armazena a mensagem do usuário
-      messages: []        // Histórico de mensagens
+  setup() {
+    const route = useRoute(); // Obtém a rota atual
+    const chatId = route.params.id; // Extrai o ID do chat da rota
+    const messages = ref([]);
+    const newMessage = ref('');
+
+    const fetchMessages = async () => {
+      try {
+        const response = await axios.get(`/api/mensagens/chat/${chatId}`);
+        messages.value = response.data;
+      } catch (error) {
+        console.error('Erro ao buscar mensagens:', error);
+      }
     };
-  },
-  methods: {
-    async sendMessage() {
-      if (this.userMessage.trim() === '') return; // Evita mensagens vazias
 
-      // Adiciona a mensagem do usuário ao histórico
-      this.messages.push({ sender: 'user', text: this.userMessage });
+    const sendMessage = async () => {
+      if (newMessage.value.trim() === '') return; // Verifica se a mensagem não está vazia
 
-      const userMessageCopy = this.userMessage;
-      this.userMessage = '';  // Limpa o campo de input
+      const message = {
+        autor: 'Usuário', // Pode ser alterado conforme necessário
+        conteudo: newMessage.value,
+        chatId: chatId
+      };
 
       try {
-        // Envia a mensagem para o backend (simulação de IA)
-        const response = await fetch('/api/send-message', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ message: userMessageCopy })
-        });
-        const data = await response.json();
-
-        // Adiciona a resposta da IA ao histórico
-        this.messages.push({ sender: 'ai', text: data.response });
+        const response = await axios.post('/api/mensagens/enviarmensagem', message);
+        messages.value.push(response.data);
+        newMessage.value = ''; // Limpa o campo de entrada
       } catch (error) {
-        this.messages.push({ sender: 'ai', text: 'Erro ao enviar mensagem.' });
+        console.error('Erro ao enviar mensagem:', error);
       }
-    }
+    };
+
+    onMounted(() => {
+      fetchMessages(); // Carrega as mensagens ao montar a view
+    });
+
+    return {
+      chatId,
+      messages,
+      newMessage,
+      sendMessage
+    };
   }
-}
+};
 </script>
 
 <style scoped>
-.chat-window {
-  width: 35vw;
-  margin: 0 auto;
-  border: 1px solid #ddd;
-  padding: 3vh 2vw;
-  display: flex;
-  flex-direction: column;
-}
-.chat-box {
-  flex-grow: 1;
-  overflow-y: auto;
-  max-height: 400px;
-  margin-bottom: 10px;
-}
-.message {
-  padding: 5px 10px;
-  border-radius: 5px;
-  margin-bottom: 10px;
-}
-.message.user {
-  background-color: #d1e7dd;
-  text-align: right;
-}
-.message.ai {
-  background-color: #f8d7da;
-  text-align: left;
-}
-.input-area {
-  display: flex;
-  justify-content: space-between;
-}
-input {
-  flex-grow: 1;
-  padding: 5px;
-}
-button {
-  margin-left: 10px;
+/* Estilos para a view de chat */
+.chat-view {
+  padding: 20px;
 }
 </style>
