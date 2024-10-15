@@ -1,15 +1,16 @@
 <template>
   <transition name="slide-fade">
     <div v-if="isVisible" class="sidebar">
+      <button class="close-btn" @click="closeSidebar">Fechar</button>
       <div class="content">
-        <h2 class="sidebar-titulo">Menu</h2>
+        <h2>Menu</h2>
         <ul>
-          <li class="sidebar-item-pai" v-for="item in sidebarItems" :key="item.name">
-            <router-link :to="item.link" class="sidebar-item">{{ item.name }}</router-link> <!-- Link clicável para cada item -->
+          <li v-for="item in sidebarItems" :key="item.name">
+            <router-link :to="item.link">{{ item.name }}</router-link> <!-- Link clicável para cada item -->
           </li>
         </ul>
         <div v-if="!sidebarItems.length">
-          <p>Carregando Conversas...</p> <!-- Placeholder para quando os itens não estão disponíveis -->
+          <p>Loading items...</p> <!-- Placeholder para quando os itens não estão disponíveis -->
         </div>
       </div>
     </div>
@@ -79,24 +80,6 @@ export default {
 .content {
   padding: 16px;
   color: white;
-}
-
-.sidebar-titulo {
-  font-weight: 500;
-  font-size: 1.8rem;
-  margin: 0;
-}
-
-.sidebar-item-pai {
-  list-style-type: none;
-  margin: 2vh 0;
-}
-
-.sidebar-item {
-  color: white;
-  text-decoration: none;
-  font-size: 1.2rem;
-  padding: 5vh 1vw;
 }
 
 .slide-fade-enter-active {
