@@ -1,7 +1,6 @@
 <template>
   <div>
-    <h1>Página Inicial</h1>
-    <p>{{ message }}</p>
+    <h1 class="titulo-home">Abra o Menu para selecionar uma conversa</h1>
   </div>
 </template>
 
@@ -26,6 +25,10 @@ export default {
   }
 };
 </script>
+  
 
 <style scoped>
+  .titulo-home {
+    font-size: 1.9rem;
+  }
 </style>
