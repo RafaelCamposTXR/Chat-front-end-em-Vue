@@ -27,12 +27,6 @@ Este projeto é uma prova de conceito em andamento, executado localmente, utiliz
 ### Pré-requisitos
 
 - [Node.js](https://nodejs.org/)
-- [Java JDK](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html)
-- [Maven](https://maven.apache.org/)
-
-### Template de Configurações para o Projeto
-
-https://start.spring.io/#!type=maven-project&language=java&platformVersion=3.3.4&packaging=jar&jvmVersion=17&groupId=com.example&artifactId=demo&name=demo&description=Demo%20project%20for%20Spring%20Boot&packageName=com.example.demo&dependencies=web,devtools,h2,thymeleaf,data-jdbc
 
 ### Configuração front-end:
 1. Navegue até a pasta do front-end do projeto.
@@ -43,7 +37,4 @@ npm run serve
 
 ### Configuração Back-end:
 
-1. Navegue até a pasta do back-end do projeto.
-2. Certifique-se de que o Maven esteja instalado.
-3. Execute o seguinte comando para compilar e iniciar o servidor:
-    mvn spring-boot:run
+Clone o Repositório back-end e deixe-o rodando localmente
