@@ -32,7 +32,7 @@ Este projeto é uma prova de conceito em andamento, executado localmente, utiliz
 1. Navegue até a pasta do front-end do projeto.
 2. Instale as dependências:
 npm install
-3. Inicie o servidor de desenvolvimento (já configurado para não conflitar com o servidor local do back-end:
+3. Inicie o servidor de desenvolvimento (já configurado para não conflitar com o servidor local do back-end):
 npm run serve
 
 ### Configuração Back-end:
