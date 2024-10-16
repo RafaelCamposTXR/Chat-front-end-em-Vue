@@ -37,4 +37,4 @@ npm run serve
 
 ### Configuração Back-end:
 
-Clone o Repositório back-end e deixe-o rodando localmente
+Clone o Repositório back-end (https://github.com/RafaelCamposTXR/Chat-backend-em-java) e deixe-o rodando localmente
