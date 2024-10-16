@@ -14,13 +14,13 @@ export default {
     };
   },
   mounted() {
-    axios.get('/api/teste')
+    axios.get('/api/sidebar')
       .then(response => {
         this.message = response.data; 
       })
       .catch(error => {
         console.error("Houve um erro!", error);
-        this.message = 'Erro requisitando mensagem';
+        this.message = 'Erro acessando porta 8080 (back-end)';
       });
   }
 };

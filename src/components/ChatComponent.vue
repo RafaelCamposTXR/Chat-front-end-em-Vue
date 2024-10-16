@@ -46,13 +46,11 @@ export default {
     sendMessage() {
       if (this.newMessage.trim() === '') return;
 
-      // Emit a new message to the parent component
       this.$emit('sendMessage', {
         text: this.newMessage,
         isSent: true
       });
 
-      // Clear the input field
       this.newMessage = '';
     }
   }

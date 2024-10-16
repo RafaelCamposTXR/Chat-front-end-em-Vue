@@ -18,8 +18,8 @@ import { useRoute } from 'vue-router';
 
 export default {
   setup() {
-    const route = useRoute(); // Obtém a rota atual
-    const chatId = route.params.id; // Extrai o ID do chat da rota
+    const route = useRoute(); 
+    const chatId = route.params.id;
     const messages = ref([]);
     const newMessage = ref('');
 
@@ -33,10 +33,10 @@ export default {
     };
 
     const sendMessage = async () => {
-      if (newMessage.value.trim() === '') return; // Verifica se a mensagem não está vazia
+      if (newMessage.value.trim() === '') return; 
 
       const message = {
-        autor: 'Usuário', // Pode ser alterado conforme necessário
+        autor: 'Usuário',
         conteudo: newMessage.value,
         chatId: chatId
       };
@@ -51,7 +51,7 @@ export default {
     };
 
     onMounted(() => {
-      fetchMessages(); // Carrega as mensagens ao montar a view
+      fetchMessages(); 
     });
 
     return {
@@ -65,7 +65,6 @@ export default {
 </script>
 
 <style scoped>
-/* Estilos para a view de chat */
 .chat-view {
   padding: 20px;
 }
