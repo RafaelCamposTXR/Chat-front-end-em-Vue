@@ -139,13 +139,15 @@ export default {
   text-align: left; /* Alinhado à esquerda */
   font-size: 1.8rem; /* Tamanho maior para o nome da conversa */
   font-weight: 500;
+  cursor: default;
 }
 
 .user-info {
   margin: 0;
-  text-align: right; /* Alinhado à esquerda */
-  font-size: 1rem; /* Tamanho da informação do usuário */
-  opacity: 0.7; /* Diminui um pouco a opacidade para dar ênfase ao nome da conversa */
+  text-align: right; 
+  font-size: 1rem; 
+  opacity: 0.7; 
+  cursor: default;
 }
 
 .messages {
@@ -155,13 +157,14 @@ export default {
   overflow-y: auto;
   margin-bottom: 3vh;
   padding: 2vh 0.35vw;
+  gap: 1vh;
 }
 
 .message {
   margin: 0 0 0.7vh 0vw;
   align-self: start;
-  background-color: #f0f0f0;
-  padding: 1.2vh 0.8vw;
+  background-color: #cfd0d062;
+  padding: 1.2vh 0.75vw;
   border-radius: 5px;
   position: relative;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
@@ -169,7 +172,6 @@ export default {
 
 .message-header {
   position: relative;
-  left: -0.13vw;
   font-size: 0.95rem;
   color: #333;
   margin-bottom: 0.5vh;

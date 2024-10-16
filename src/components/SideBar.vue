@@ -113,7 +113,7 @@ export default {
   color: #d1d1d6;
   font-size: 1.1rem;
   text-decoration: none;
-  padding: 10px 15px;
+  padding: 1.5vh 1vw;
   display: block;
   border-radius: 8px;
   background-color: rgba(255, 255, 255, 0.1);
