@@ -2,7 +2,7 @@
 
 ## Descrição
 
-Este projeto é uma prova de conceito em andamento, executado localmente, utilizando Vue.js para o front-end e Java com o framework Spring Boot para o back-end. O back-end é estruturado segundo o padrão MVC, escolhido para facilitar a manutenção e escalabilidade da aplicação. O banco de dados integrado H2 é utilizado, proporcionando uma alternativa leve e de fácil conexão. Por se tratar de um projeto em pequena de escala e executado localmente, certas funcionalidades são feitas de maneira mais simples, e não existem métodos de segurança robustos implementados. No front-end, um menu de conversas permite ao usuário selecionar o destinatário e o perfil que será assumido durante a interação. 
+Este projeto é uma prova de conceito em andamento, executado localmente, utilizando Vue.js para o front-end e Java com o framework Spring Boot para o back-end. O back-end é estruturado segundo o padrão MVC, escolhido para facilitar a manutenção e escalabilidade da aplicação. O banco de dados integrado H2 é utilizado, proporcionando uma alternativa leve e de fácil conexão. Por se tratar de um projeto em pequena escala e executado localmente, certas funcionalidades são feitas de maneira mais simples, e não existem métodos de segurança robustos implementados. No front-end, um menu de conversas permite ao usuário selecionar o destinatário e o perfil que será assumido durante a interação. 
 
 ## Funcionalidades
 
