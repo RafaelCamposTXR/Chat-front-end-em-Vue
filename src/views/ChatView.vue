@@ -37,7 +37,7 @@ export default {
     const user = ref(route.params.user);
     const messages = ref([]);
     const newMessage = ref('');
-    const currentChatName = ref(''); // Nome da conversa
+    const currentChatName = ref(''); 
 
     // Função para buscar mensagens
     const fetchMessages = async () => {
@@ -49,20 +49,20 @@ export default {
       }
     };
 
-    // Função para buscar o nome da conversa
+    
     const fetchCurrentChatName = async () => {
       try {
         const response = await axios.get('/api/sidebar');
-        const chat = response.data.find(item => item.user === user.value); // Busca o item correspondente ao usuário
+        const chat = response.data.find(item => item.user === user.value); 
         if (chat) {
-          currentChatName.value = chat.name; // Atualiza o nome da conversa
+          currentChatName.value = chat.name; 
         }
       } catch (error) {
         console.error('Erro ao buscar nome da conversa:', error);
       }
     };
 
-    // Função para enviar mensagem
+    
     const sendMessage = async () => {
       if (newMessage.value.trim() === '') return;
 
@@ -82,16 +82,16 @@ export default {
     };
 
     onMounted(() => {
-      fetchMessages(); // Chama a função para buscar mensagens ao montar o componente
-      fetchCurrentChatName(); // Chama a função para buscar o nome da conversa
+      fetchMessages(); 
+      fetchCurrentChatName(); 
     });
 
     watch(
       () => route.params.id,
       (newId) => {
         chatId.value = newId;
-        fetchMessages(); // Recarrega as mensagens ao mudar o chatId
-        fetchCurrentChatName(); // Atualiza o nome da conversa
+        fetchMessages(); 
+        fetchCurrentChatName(); 
       }
     );
 
@@ -99,7 +99,7 @@ export default {
       () => route.params.user,
       (newUser) => {
         user.value = newUser;
-        fetchCurrentChatName(); // Atualiza o nome da conversa ao mudar o usuário
+        fetchCurrentChatName(); 
       }
     );
 
@@ -129,15 +129,15 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  gap: 0.1vh; /* Posiciona os elementos no início */
-  padding: 0.5vh 0.5vw; /* Reduz a margem interna */
-  margin-bottom: 3vh; /* Margem inferior */
+  gap: 0.1vh; 
+  padding: 0.5vh 0.5vw;
+  margin-bottom: 3vh; 
 }
 
 .chat-name {
   margin: 0;
-  text-align: left; /* Alinhado à esquerda */
-  font-size: 1.8rem; /* Tamanho maior para o nome da conversa */
+  text-align: left;
+  font-size: 1.8rem;
   font-weight: 500;
   cursor: default;
 }
