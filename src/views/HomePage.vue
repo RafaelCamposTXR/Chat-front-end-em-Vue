@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="titulo-home-pai">
     <h1 class="titulo-home">Abra o Menu para selecionar uma conversa</h1>
   </div>
 </template>
@@ -28,6 +28,13 @@ export default {
   
 
 <style scoped>
+
+  .titulo-home-pai {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    top: 9vh;
+  }
   .titulo-home {
     font-size: 1.9rem;
   }
