@@ -39,7 +39,6 @@ export default {
     const newMessage = ref('');
     const currentChatName = ref(''); 
 
-    // Função para buscar mensagens
     const fetchMessages = async () => {
       try {
         const response = await axios.get(`/api/mensagens/chat/${chatId.value}`);
