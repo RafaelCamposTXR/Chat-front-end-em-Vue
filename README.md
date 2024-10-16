@@ -1,4 +1,4 @@
-# Projeto de Prova de Conceito - Chat Local
+# Projeto de Prova de Conceito - Chat Local com Escolha de Usuário
 
 ## Descrição
 
