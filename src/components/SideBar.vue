@@ -97,7 +97,7 @@ export default {
   padding: 0;
   margin: 0;
   overflow-y: auto;
-  overflow-x: hidden; /* Adicionado overflow-x: hidden */
+  overflow-x: hidden; 
 }
 
 .sidebar-item-pai {
@@ -125,7 +125,7 @@ export default {
   color: #ffffff;
 }
 
-/* Novo estilo para a divisão do conteúdo de cada item da sidebar */
+
 .item-content {
   display: flex;
   flex-direction: column;
@@ -146,7 +146,7 @@ export default {
   text-align: right;
 }
 
-/* Estilo de mensagem de carregamento */
+
 .loading-message {
   text-align: center;
   font-size: 1rem;
@@ -154,7 +154,7 @@ export default {
   margin-top: 2rem;
 }
 
-/* Animação de transição suave */
+
 .slide-fade-enter-active {
   transition: all 0.3s ease;
 }
@@ -173,7 +173,7 @@ export default {
   transform: translateX(-100%);
 }
 
-/* Scroll customizado para a lista */
+
 .sidebar-lista {
   overflow-y: auto;
   max-height: calc(100vh - 150px);
