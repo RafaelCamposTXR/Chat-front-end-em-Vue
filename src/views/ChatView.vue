@@ -1,8 +1,8 @@
 <template>
   <div class="chat-view">
     <div class="header">
-      <h2>Você está acessando como {{ user }}</h2>
-      <h3>Conversando com: {{ currentChatName }}</h3> <!-- Nome da conversa -->
+      <h3 class="chat-name">{{ currentChatName }}</h3> <!-- Nome da conversa -->
+      <h4 class="user-info">Você está acessando como {{ user }}</h4> <!-- Informação do usuário -->
     </div>
 
     <div v-if="messages.length" class="messages">
@@ -128,21 +128,24 @@ export default {
 .header {
   display: flex;
   flex-direction: column;
-  justify-content: start;
-  background-color: #e0e0e0; /* Cor de fundo da divisória */
-  padding: 1vh;
-  border-radius: 5px;
-  margin-bottom: 1vh;
-  text-align: center;
+  justify-content: flex-start;
+  gap: 0.1vh; /* Posiciona os elementos no início */
+  padding: 0.5vh 0.5vw; /* Reduz a margem interna */
+  margin-bottom: 3vh; /* Margem inferior */
 }
 
-.header h2 {
+.chat-name {
   margin: 0;
+  text-align: left; /* Alinhado à esquerda */
+  font-size: 1.8rem; /* Tamanho maior para o nome da conversa */
+  font-weight: 500;
 }
 
-.header h3 {
+.user-info {
   margin: 0;
-  font-weight: normal;
+  text-align: right; /* Alinhado à esquerda */
+  font-size: 1rem; /* Tamanho da informação do usuário */
+  opacity: 0.7; /* Diminui um pouco a opacidade para dar ênfase ao nome da conversa */
 }
 
 .messages {
@@ -151,14 +154,14 @@ export default {
   max-height: 40vh;
   overflow-y: auto;
   margin-bottom: 3vh;
-  padding: 2vh 0.35vw ;
+  padding: 2vh 0.35vw;
 }
 
 .message {
   margin: 0 0 0.7vh 0vw;
   align-self: start;
   background-color: #f0f0f0;
-  padding: 1.2vh 0.9vw;
+  padding: 1.2vh 0.8vw;
   border-radius: 5px;
   position: relative;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
@@ -166,7 +169,7 @@ export default {
 
 .message-header {
   position: relative;
-  left: -0.25vw;
+  left: -0.13vw;
   font-size: 0.95rem;
   color: #333;
   margin-bottom: 0.5vh;
