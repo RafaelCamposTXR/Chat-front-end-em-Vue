@@ -20,8 +20,8 @@ export default {
         this.message = response.data; 
       })
       .catch(error => {
-        console.error("There was an error!", error);
-        this.message = 'Error fetching data';
+        console.error("Houve um erro!", error);
+        this.message = 'Erro requisitando mensagem';
       });
   }
 };

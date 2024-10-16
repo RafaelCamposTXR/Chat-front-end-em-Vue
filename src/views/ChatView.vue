@@ -155,7 +155,7 @@ export default {
   flex-direction: column;
   max-height: 40vh;
   overflow-y: auto;
-  margin-bottom: 3vh;
+  margin-bottom: 1.4vh;
   padding: 2vh 0.35vw;
   gap: 1vh;
 }
